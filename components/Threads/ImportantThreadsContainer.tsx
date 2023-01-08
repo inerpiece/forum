@@ -84,9 +84,8 @@ const ImportantThreadsContainer = (containerData: ContainerData) => {
           </div>
           {content === "top" ? (
             <div className={styles.threadsContainer}>
-              {topThree.map((thread: ThreadData, index) => (
+              {topThree.map((thread: ThreadData) => (
                 <ThreadPreview
-                  key={index}
                   author={thread.author}
                   categories={thread.categories}
                   date={thread.date}
