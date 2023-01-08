@@ -1,0 +1,74 @@
+.container {
+  display: flex;
+  width: 90%;
+  background-color: #806305;
+  margin: 0 auto;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.img {
+  width: 90%;
+  height: 189.84375;
+  margin: 0 auto;
+  border: none;
+}
+
+.leftThreadSide {
+  width: 75%;
+}
+
+.rightThreadSide {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid #403103;
+}
+
+.title {
+  margin: 10px 0;
+  padding: 0 10px;
+  color: #FFC509;
+}
+
+.chipContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.chip {
+  padding: 2px 5px;
+  background-color: #403103;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: #BF9408;
+}
+
+.authorContainer {
+  display: flex;
+}
+
+.author, .date {
+  margin: 10px 0 10px 10px;
+}
+
+.author {
+  color: #E6B209;
+}
+
+.date {
+  color: #403103;
+}
+
+.members {
+  color: #403103;
+  font-size: 22px;
+}

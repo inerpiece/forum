@@ -1,0 +1,41 @@
+.expandedContainer, .collapsedContainer {
+  background-color: var(--tertiary-forum-color);
+  padding: 5px 0;
+  margin: 30px 0;
+  border: 6px dashed var(--primary-forum-color);
+}
+
+.threadsContainer {
+  max-height: 350px;
+  overflow: auto;
+}
+
+.collapsed {
+  background-color: var(--secondary-forum-color);
+  width: 90%;
+  display: flex;
+  margin: 10px auto;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  color: var(--fifth-forum-color);
+  position: relative;
+  border-radius: 10px;
+}
+
+.collapsedLabel {
+  width: 100%;
+  text-align: center;
+}
+
+.collapsedIcon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto 0;
+}
+
+.path {
+  fill: var(--fifth-forum-color);
+}

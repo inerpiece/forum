@@ -143,13 +143,97 @@
   inset: 0;
   padding: 1px;
   border-radius: var(--border-radius);
-  background: linear-gradient(
-    to bottom right,
-    rgba(var(--tile-start-rgb), 1),
-    rgba(var(--tile-end-rgb), 1)
-  );
+  background: linear-gradient(to bottom right,
+      rgba(var(--tile-start-rgb), 1),
+      rgba(var(--tile-end-rgb), 1));
   background-clip: content-box;
 }
+
+/* MY CSS STARTS HERE */
+.navBufferForFirstElement {
+  margin-top: 70px;
+}
+
+.loginForm {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+.container {
+  min-height: 100vh;
+  position: relative;
+}
+
+.mainNavigation {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--primary-forum-color);
+  color: var(--fifth-forum-color);
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.navigationMenuHidden {
+  transform: translateX(-100%);
+  visibility: collapse;
+  position: absolute;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+.navigationMenuVisible {
+  transform: translateX(0);
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 48px;
+  height: calc(100vh - 48px);
+  visibility: visible;
+  width: 80%;
+}
+
+.navigationMenuHidden, .navigationMenuVisible {
+  transition: all 0.3s;
+  background-color: var(--fifth-forum-color);
+}
+
+.navMantle {
+  position: fixed;
+  z-index: 9999;
+  opacity: 0.8;
+  height: calc(100% - 48px);
+  width: 100%;
+  background-color: var(--forth-forum-color);
+  top: 48px;
+}
+
+.navList {
+  border-bottom: 2px solid var(--fifth-forum-color);
+  background-color: var(--tertiary-forum-color);
+  width: 100%;
+  font-size: 16px;
+  color: var(--fifth-forum-color);
+  padding: 10px;
+}
+
+.userAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 100%;
+  padding: 2px;
+  margin: 0 3px;
+  border: 2px solid var(--fifth-forum-color);
+}
+
+/* END OF MY CSS */
+
 
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
@@ -226,11 +310,9 @@
     border-radius: 0;
     border: none;
     border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
-    background: linear-gradient(
-      to bottom,
-      rgba(var(--background-start-rgb), 1),
-      rgba(var(--callout-rgb), 0.5)
-    );
+    background: linear-gradient(to bottom,
+        rgba(var(--background-start-rgb), 1),
+        rgba(var(--callout-rgb), 0.5));
     background-clip: padding-box;
     backdrop-filter: blur(24px);
   }
@@ -241,11 +323,9 @@
     inset: auto 0 0;
     padding: 2rem;
     height: 200px;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgb(var(--background-end-rgb)) 40%
-    );
+    background: linear-gradient(to bottom,
+        transparent 0%,
+        rgb(var(--background-end-rgb)) 40%);
     z-index: 1;
   }
 }
@@ -272,6 +352,7 @@
   from {
     transform: rotate(360deg);
   }
+
   to {
     transform: rotate(0deg);
   }
