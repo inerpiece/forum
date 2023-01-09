@@ -1,0 +1,15 @@
+.chipContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 10px;
+}
+
+.chip {
+  padding: 2px 5px;
+  background-color: var(--fifth-forum-color);
+  border-radius: 10px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  font-size: 16px;
+  color: var(--tertiary-forum-color);
+}

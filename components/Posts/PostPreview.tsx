@@ -2,19 +2,20 @@ import { Timestamp } from "firebase/firestore/lite";
 import styles from "../../styles/PostPreview.module.css";
 
 export interface PostData {
+  id: string;
   title: string;
   body: string;
   author: string;
   upvotes: number;
   downvotes: number;
   views: number;
-  comments: string; // TODO: FIX THIS WHEN YOU CREATE THE COMMENT COMPONENT
-  image: string;
+  comments?: string; // TODO: FIX THIS WHEN YOU CREATE THE COMMENT COMPONENT
+  image?: string;
   date: string;
   categories: string[];
-  isFeatured: boolean;
-  isTopThree: boolean;
-  isHotTrending: boolean;
+  isFeatured?: boolean;
+  isTopThree?: boolean;
+  isHotTrending?: boolean;
 }
 
 // formats large numbers so that they are shortened to 3 digits at most + 1 letter for a total of 4 characters
@@ -33,6 +34,11 @@ export const formatNumbers = (number: number) => {
   }
   return num;
 };
+
+// Taken from https://stackoverflow.com/a/2901298/15367677 -- It formats numbers to have commas between them on every thousandth
+export function formatLargeNumbersWithCommas(number: number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 const PostPreview = (PostData: PostData) => {
   const { title, author, date, categories, isFeatured, views, upvotes } =
@@ -54,8 +60,10 @@ const PostPreview = (PostData: PostData) => {
             {title.length > 20 ? "..." : null}
           </h2>
           <div className={styles.chipContainer}>
-            {first5Chips.map((category) => (
-              <span className={styles.chip}>{category}</span>
+            {first5Chips.map((category, index) => (
+              <span className={styles.chip} key={index}>
+                {category}
+              </span>
             ))}
             {categories.length > 5 ? (
               <span className={styles.chip}>and more...</span>

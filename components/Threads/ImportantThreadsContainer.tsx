@@ -5,6 +5,7 @@ import ThreadPreview from "./ThreadPreview";
 import { NextPage } from "next";
 
 const threadOne: ThreadData = {
+  id: "122",
   author: "John",
   members: 40,
   date: "13/13/13",
@@ -14,6 +15,7 @@ const threadOne: ThreadData = {
 };
 
 const threadTwo: ThreadData = {
+  id: "121",
   author: "Alice",
   members: 50,
   date: "13/12/13",
@@ -23,6 +25,7 @@ const threadTwo: ThreadData = {
 };
 
 const threadThree: ThreadData = {
+  id: "120",
   author: "John",
   members: 60,
   date: "13/11/13",
@@ -86,6 +89,7 @@ const ImportantThreadsContainer = (containerData: ContainerData) => {
             <div className={styles.threadsContainer}>
               {topThree.map((thread: ThreadData, index) => (
                 <ThreadPreview
+                  id={thread.id}
                   key={index}
                   author={thread.author}
                   categories={thread.categories}
@@ -98,8 +102,10 @@ const ImportantThreadsContainer = (containerData: ContainerData) => {
             </div>
           ) : content === "trending" ? (
             <div className={styles.threadsContainer}>
-              {trending.map((thread: ThreadData) => (
+              {trending.map((thread: ThreadData, index) => (
                 <ThreadPreview
+                  id={thread.id}
+                  key={index}
                   author={thread.author}
                   categories={thread.categories}
                   date={thread.date}

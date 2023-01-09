@@ -1,12 +1,16 @@
 import styles from "../styles/SearchBar.module.css";
 
-const SearchBar = () => {
+interface SearchBarData {
+  placeholder: string;
+}
+
+const SearchBar = (props: SearchBarData) => {
   return (
     <div className={styles.container}>
       <input
         className={styles.input}
         type="text"
-        placeholder="Search for threads..."
+        placeholder={props.placeholder}
       />
       <svg
         style={{ width: "32px", height: "32px", marginRight: "10px" }}

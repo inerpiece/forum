@@ -151,7 +151,8 @@
 
 /* MY CSS STARTS HERE */
 .navBufferForFirstElement {
-  margin-top: 70px;
+  margin-top: 50px;
+  display: flex;
 }
 
 .loginForm {
@@ -162,7 +163,7 @@
 }
 
 .container {
-  min-height: 100vh;
+  min-height: calc(100vh - 70px);
   position: relative;
 }
 
@@ -177,6 +178,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  z-index: 10000;
 }
 
 .navigationMenuHidden {

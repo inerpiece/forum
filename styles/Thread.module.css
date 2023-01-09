@@ -1,0 +1,44 @@
+.infoBox {
+  width: 100%;
+  padding: 10px 0;
+  background-color: var(--secondary-forum-color);
+}
+
+.title {
+  padding: 0 10px;
+  margin-bottom: 10px;
+  color: var(--fifth-forum-color);
+}
+
+.author {
+  margin: 10px 10px 10px 0;
+  color: var(--forth-forum-color);
+}
+
+.date {
+  color: var(--forth-forum-color);
+}
+
+.members {
+  padding: 0 10px;
+  color: var(--forth-forum-color);
+  font-size: 22px;
+}
+
+.body {
+  padding: 0 10px;
+  margin-top: 40px;
+  color: var(--fifth-forum-color);
+}
+
+.authorContainer {
+  display: flex;
+}
+
+.rightThreadSide {
+  padding: 0 10px;
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}

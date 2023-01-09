@@ -37,21 +37,6 @@
   color: #FFC509;
 }
 
-.chipContainer {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.chip {
-  padding: 2px 5px;
-  background-color: #403103;
-  border-radius: 10px;
-  margin-left: 10px;
-  margin-bottom: 5px;
-  font-size: 16px;
-  color: #BF9408;
-}
-
 .authorContainer {
   display: flex;
 }

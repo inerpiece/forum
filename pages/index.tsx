@@ -42,6 +42,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const [burgerMenuIsVisible, setBurgerMenuIsVisible] = useState(false);
   const router = useRouter();
+  console.log(router);
   // const handleSignOut = () => {
   //   signOut(auth)
   //     .then(() => {
@@ -54,76 +55,13 @@ export default function Home() {
   //     });
   // };
 
-  console.log(burgerMenuIsVisible);
-
   return (
     <div className={styles.container}>
-      <div>
-        <header>
-          <nav className={styles.mainNavigation}>
-            <div
-              className={styles.burgerMenu}
-              onClick={() => setBurgerMenuIsVisible(!burgerMenuIsVisible)}
-            >
-              <svg
-                style={{ width: "48px", height: "48px" }}
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="currentColor"
-                  d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"
-                />
-              </svg>
-            </div>
-            <h1>Title</h1>
-            <Link href={"/profile"}>
-              <div className={styles.userAvatar}>
-                <svg
-                  style={{ width: "36px", height: "36px" }}
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"
-                  />
-                </svg>
-              </div>
-            </Link>
-          </nav>
-
-          <ul
-            className={
-              burgerMenuIsVisible
-                ? styles.navigationMenuVisible
-                : styles.navigationMenuHidden
-            }
-          >
-            <Link href={"/profile"}>
-              <li className={styles.navList}>Profile</li>
-            </Link>
-            <Link href={"/login"}>
-              <li className={styles.navList}>Login</li>
-            </Link>
-            <Link href={"/signup"}>
-              <li className={styles.navList}>Sign Up</li>
-            </Link>
-            <Link href={"/options"}>
-              <li className={styles.navList}>Options</li>
-            </Link>
-          </ul>
-          {burgerMenuIsVisible ? (
-            <div
-              onClick={() => setBurgerMenuIsVisible(false)}
-              className={styles.navMantle}
-            ></div>
-          ) : null}
-        </header>
-      </div>
-      <div className={styles.navBufferForFirstElement}></div>
-      <SearchBar />
+      <SearchBar placeholder="Search for threads..." />
       <ImportantThreadsContainer label={"Top 3"} content={"top"} />
       <ImportantThreadsContainer label={"Hot/Trending"} content={"trending"} />
       <PostPreview
+        id="123"
         author="Doe"
         body="Lorem ipsum dilore..."
         comments=""
@@ -152,7 +90,8 @@ export default function Home() {
         ]}
       />
       <ThreadPreview
-        posts=""
+        id="123"
+        posts={[]}
         author="Jane"
         date="32/23/23"
         isFeatured={false}
@@ -177,7 +116,8 @@ export default function Home() {
         ]}
       />
       <ThreadPreview
-        posts=""
+        id="124"
+        posts={[]}
         author="Jane"
         date="32/23/23"
         isFeatured={true}

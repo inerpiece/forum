@@ -1,0 +1,25 @@
+.container {
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leftSide {
+  display: flex;
+  align-items: center;
+  color: var(--primary-forum-color);
+}
+
+.score {
+  color: var(--primary-forum-color);
+}
+
+.userAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 100%;
+  padding: 2px;
+  margin-right: 10px;
+  border: 2px solid var(--tertiary-forum-color);
+}
