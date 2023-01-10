@@ -14,7 +14,9 @@ const mockPostOne: PostData = {
   author: "Bo",
   body: "Yall this might work",
   categories: ["fafb", "bruh", "a", "b", "c", "d"],
-  comments: "",
+  comments: [
+    { author: "Bo", body: "First comment", upvotes: 20, downvotes: 3 },
+  ],
   date: "15/15/15",
   downvotes: 5_000,
   upvotes: 5_103,
@@ -31,7 +33,9 @@ const mockPostTwo: PostData = {
   author: "Bo",
   body: "Yall this might work",
   categories: ["fafb", "bruh", "a", "b", "c", "d"],
-  comments: "",
+  comments: [
+    { author: "Bo", body: "First comment", upvotes: 20, downvotes: 3 },
+  ],
   date: "15/15/15",
   downvotes: 5_000,
   upvotes: 5_103,
@@ -48,7 +52,9 @@ const mockPostThree: PostData = {
   author: "Bo",
   body: "Yall this might work",
   categories: ["fafb", "bruh", "a", "b", "c", "d"],
-  comments: "",
+  comments: [
+    { author: "Bo", body: "First comment", upvotes: 20, downvotes: 3 },
+  ],
   date: "15/15/15",
   downvotes: 5_000,
   upvotes: 5_103,

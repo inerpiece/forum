@@ -1,0 +1,68 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0 10px;
+}
+
+.body {
+  width: calc(100% - 54px);
+  background-color: var(--forth-forum-color);
+  height: 130px;
+  padding: 10px;
+  font-size: 18px;
+  color: var(--secondary-forum-color);
+  flex-wrap: wrap;
+  overflow-x: auto;
+}
+
+.actionBar {
+  width: calc(100% - 54px);
+  display: flex;
+  color: var(--fifth-forum-color);
+  background-color: var(--primary-forum-color);
+  height: 42px;
+  padding: 0 10px;
+}
+
+.actionBarLeftSide {
+  display: flex;
+  justify-content: flex-start;
+  width: 50%;
+}
+
+.upvoteContainer {
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.actionBarUpvotes {
+  font-size: 16px;
+}
+
+.actionBarDownvotes {
+  font-size: 16px;
+}
+
+.actionBarRightSide {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.downvoteContainer {
+  display: flex;
+  align-items: center;
+}
+
+.path {
+  fill: var(--fifth-forum-color);
+}

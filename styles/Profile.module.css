@@ -1,0 +1,113 @@
+.container {
+  background-color: var(--secondary-forum-color);
+  width: 100%;
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto 0;
+}
+
+.collapsedProfile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  position: relative;
+}
+
+.collapsedUsername {
+  font-size: 18px;
+  color: var(--fifth-forum-color);
+}
+
+.path {
+  fill: var(--forth-forum-color);
+}
+
+/* Expanded below */
+
+.expandedProfile {
+  position: relative;
+}
+
+.expandedIcon {
+  position: absolute;
+  top: 5px;
+  right: 0;
+}
+
+.largeProfileContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.userAvatar {
+  border: 2px solid var(--fifth-forum-color);
+  border-radius: 100%;
+  margin: 20px 0;
+}
+
+.expandedUsername {
+  font-size: 18px;
+  color: var(--fifth-forum-color);
+}
+
+.userStatsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.userScore {
+  color: var(--forth-forum-color);
+  font-size: 20px;
+}
+
+.userThreads, .userPosts, .userComments {
+  font-size: 18px;
+  color: var(--fifth-forum-color);
+  padding: 2px;
+}
+
+/* Nav Section below */
+
+.navSectionContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.navSectionItem, .navSectionItemActive {
+  /* below box shadow taken from https://stackoverflow.com/a/28807765/15367677 */
+  box-shadow:
+    1px 0 0 0 var(--fifth-forum-color),
+    0 1px 0 0 var(--fifth-forum-color),
+    1px 1px 0 0 var(--fifth-forum-color),
+    /* Just to fix the corner */
+    1px 0 0 0 var(--fifth-forum-color) inset,
+    0 1px 0 0 var(--fifth-forum-color) inset;
+  display: flex;
+  width: 25%;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  color: var(--fifth-forum-color);
+}
+
+.navSectionItem {
+  background-color: var(--primary-forum-color);
+}
+
+.navSectionItemActive {
+  background-color: var(--tertiary-forum-color);
+}

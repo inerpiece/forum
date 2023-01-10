@@ -9,7 +9,7 @@ export interface PostData {
   upvotes: number;
   downvotes: number;
   views: number;
-  comments?: string; // TODO: FIX THIS WHEN YOU CREATE THE COMMENT COMPONENT
+  comments?: any[]; // TODO: FIX THIS WHEN YOU CREATE THE COMMENT COMPONENT
   image?: string;
   date: string;
   categories: string[];
