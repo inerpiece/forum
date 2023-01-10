@@ -64,7 +64,7 @@ export default function Home() {
         id="123"
         author="Doe"
         body="Lorem ipsum dilore..."
-        comments=""
+        comments={[]}
         date="13/13/13"
         downvotes={40}
         image=""
