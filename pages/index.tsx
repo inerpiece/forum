@@ -45,7 +45,7 @@ const auth = getAuth(app);
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [userEmail, setUserEmail] = useState<string | null>("");
+  // const [userEmail, setUserEmail] = useState<string | null>("");
   const [allThreads, setAllThreads] = useState<any[] | undefined>();
 
   async function getThreads(db: any) {
@@ -70,8 +70,6 @@ export default function Home() {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
-        console.log("user id", uid);
-        setUserEmail(user.email);
         // ...
       } else {
         // User is signed out
@@ -101,8 +99,9 @@ export default function Home() {
     event.preventDefault();
     setIsLoading(true);
 
-    if (userEmail === "") {
+    if (!auth.currentUser) {
       router.push("/login");
+      return;
     }
 
     const rawCategories = event.target.threadCategories.value;
@@ -126,7 +125,7 @@ export default function Home() {
       isTopThree: false,
       isHotTrending: false,
       members: 1,
-      author: userEmail,
+      author: auth.currentUser.email,
       posts: [],
       date: formattedDate,
     };

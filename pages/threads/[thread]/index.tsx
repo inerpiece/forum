@@ -106,7 +106,7 @@ const mockThread: ThreadData = {
 // TODO: pull the posts from the db based on their ids
 
 const Thread = () => {
-  const [userEmail, setUserEmail] = useState<string | null>("");
+  // const [userEmail, setUserEmail] = useState<string | null>("");
   const [threadData, setThreadData] = useState<any>();
   const [postsData, setPostsData] = useState<any>();
   const [formIsActive, setFormIsActive] = useState(false);
@@ -124,8 +124,6 @@ const Thread = () => {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
-        console.log("user id", uid);
-        setUserEmail(user.email);
         // ...
       } else {
         // User is signed out
@@ -183,14 +181,13 @@ const Thread = () => {
     getThreadData();
   }, []);
 
-  async function getThreadPosts(db: any) {}
-
   const handleNewPost = async (event: any) => {
     event.preventDefault();
     setIsLoading(true);
 
-    if (userEmail === "") {
+    if (!auth.currentUser) {
       router.push("/login");
+      return;
     }
 
     const rawCategories = event.target.postCategories.value;
@@ -214,7 +211,7 @@ const Thread = () => {
       isTopThree: false,
       isHotTrending: false,
       members: 1,
-      author: userEmail,
+      author: auth.currentUser.email,
       date: formattedDate,
       comments: [],
       upvotes: 0,

@@ -1,5 +1,5 @@
 import styles from "../../styles/Profile.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Author from "../../components/Author";
 import SearchBar from "../../components/SearchBar";
 import PostPreview, { PostData } from "../../components/Posts/PostPreview";
@@ -14,6 +14,7 @@ import {
 } from "firebase/auth";
 import { initFirebase } from "../../db";
 import { getFirestore } from "firebase/firestore/lite";
+import { useRouter } from "next/router";
 
 interface ProfilePages {
   pageName: "friends" | "threads" | "posts" | "chat";
@@ -109,20 +110,19 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 
 const Profile = () => {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      const uid = user.uid;
-      console.log("user id", uid);
-      console.log("user email", user.email);
-      // ...
-    } else {
-      // User is signed out
-      // ...
-      console.log("no user");
-    }
-  });
+  const router = useRouter();
+
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        router.push("/");
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log(error);
+      });
+  };
   const [profileIsExpanded, setProfileIsExpanded] = useState(true);
   const [pageName, setPageName] = useState("friends");
   return (
@@ -133,7 +133,9 @@ const Profile = () => {
             onClick={() => setProfileIsExpanded(!profileIsExpanded)}
             className={styles.collapsedProfile}
           >
-            <div className={styles.collapsedUsername}>Username</div>
+            <div className={styles.collapsedUsername}>
+              {auth.currentUser ? auth.currentUser.email : "No user"}
+            </div>
             <svg
               className={styles.icon}
               style={{ width: "20px", height: "20px" }}
@@ -148,7 +150,10 @@ const Profile = () => {
         ) : null}
         {profileIsExpanded ? (
           <div
-            onClick={() => setProfileIsExpanded(!profileIsExpanded)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setProfileIsExpanded(!profileIsExpanded);
+            }}
             className={styles.expandedProfile}
           >
             <svg
@@ -173,13 +178,33 @@ const Profile = () => {
                   />
                 </svg>
               </div>
-              <div className={styles.expandedUsername}>Username</div>
+              <div className={styles.expandedUsername}>
+                {auth.currentUser ? auth.currentUser.email : "No user"}
+              </div>
             </div>
             <div className={styles.userStatsContainer}>
               <span className={styles.userScore}>Score: 300K</span>
               <span className={styles.userThreads}>Threads: 45</span>
               <span className={styles.userPosts}>Posts: 23</span>
               <span className={styles.userComments}>Comments: 25</span>
+              {auth.currentUser ? (
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleLogout();
+                  }}
+                >
+                  <svg
+                    style={{ width: "30px", height: "30px" }}
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      className={styles.path}
+                      d="M16,17V14H9V10H16V7L21,12L16,17M14,2A2,2 0 0,1 16,4V6H14V4H5V20H14V18H16V20A2,2 0 0,1 14,22H5A2,2 0 0,1 3,20V4A2,2 0 0,1 5,2H14Z"
+                    />
+                  </svg>
+                </div>
+              ) : null}
             </div>
           </div>
         ) : null}

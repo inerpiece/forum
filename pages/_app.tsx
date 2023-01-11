@@ -4,6 +4,12 @@ import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { initFirebase } from "../db";
+
+const app = initFirebase();
+
+const auth = getAuth(app);
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -22,6 +28,21 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     setBurgerMenuIsVisible(false);
   }, [router.asPath]);
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        // ...
+      } else {
+        // User is signed out
+        // ...
+        console.log("no user");
+      }
+    });
+  }, []);
+
   return (
     <div className={styles.container}>
       <div>
@@ -36,20 +57,20 @@ export default function App({ Component, pageProps }: AppProps) {
                 viewBox="0 0 24 24"
               >
                 <path
-                  fill="currentColor"
+                  className={styles.path}
                   d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"
                 />
               </svg>
             </div>
             <h1>{navTitle}</h1>
-            <Link href={"/profile"}>
+            <Link href={auth.currentUser ? "/profile" : "/login"}>
               <div className={styles.userAvatar}>
                 <svg
                   style={{ width: "36px", height: "36px" }}
                   viewBox="0 0 24 24"
                 >
                   <path
-                    fill="currentColor"
+                    className={styles.path}
                     d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"
                   />
                 </svg>
@@ -67,9 +88,11 @@ export default function App({ Component, pageProps }: AppProps) {
             <Link href={"/"}>
               <li className={styles.navList}>Home</li>
             </Link>
-            <Link href={"/profile"}>
-              <li className={styles.navList}>Profile</li>
-            </Link>
+            {auth.currentUser ? (
+              <Link href={auth.currentUser ? "/profile" : "/login"}>
+                <li className={styles.navList}>Profile</li>
+              </Link>
+            ) : null}
             <Link href={"/login"}>
               <li className={styles.navList}>Login</li>
             </Link>
