@@ -234,6 +234,71 @@
   border: 2px solid var(--fifth-forum-color);
 }
 
+.addNew {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  color: var(--fifth-forum-color);
+  font-size: 18px;
+  background-color: var(--secondary-forum-color);
+  justify-self: flex-end;
+}
+
+/* Form CSS */
+
+.newThreadFormContainer {
+  width: 100%;
+  padding: 20px 10px;
+  background-color: var(--secondary-forum-color);
+}
+
+.newThreadForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.formInput {
+  margin-bottom: 10px;
+  height: 40px;
+  font-size: 16px;
+  padding: 0 10px;
+  background-color: var(--forth-forum-color);
+  border: none;
+  color: var(--primary-forum-color);
+}
+
+.formTextarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: var(--forth-forum-color);
+  border: none;
+  color: var(--primary-forum-color);
+}
+
+.formInput::placeholder, .formTextarea::placeholder {
+  color: var(--primary-forum-color);
+}
+
+.formInput:focus, .formTextarea:focus {
+  outline: none;
+}
+
+.formBtn {
+  width: 50%;
+  background-color: var(--fifth-forum-color);
+  padding: 15px 10px;
+  color: var(--primary-forum-color);
+  border: none;
+  border-radius: 15px;
+  font-size: 16px;
+}
+
+.formBtn:disabled {
+  opacity: 0.5;
+}
+
 /* END OF MY CSS */
 
 

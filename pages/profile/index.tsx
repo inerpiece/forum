@@ -6,6 +6,14 @@ import PostPreview, { PostData } from "../../components/Posts/PostPreview";
 import ThreadPreview, {
   ThreadData,
 } from "../../components/Threads/ThreadPreview";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";
+import { initFirebase } from "../../db";
+import { getFirestore } from "firebase/firestore/lite";
 
 interface ProfilePages {
   pageName: "friends" | "threads" | "posts" | "chat";
@@ -94,7 +102,27 @@ const mockThread: ThreadData = {
 
 const mockArrThreads = [mockThread];
 
+const app = initFirebase();
+
+const db = getFirestore(app);
+
+const auth = getAuth(app);
+
 const Profile = () => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      const uid = user.uid;
+      console.log("user id", uid);
+      console.log("user email", user.email);
+      // ...
+    } else {
+      // User is signed out
+      // ...
+      console.log("no user");
+    }
+  });
   const [profileIsExpanded, setProfileIsExpanded] = useState(true);
   const [pageName, setPageName] = useState("friends");
   return (
