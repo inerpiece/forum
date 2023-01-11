@@ -8,6 +8,7 @@ import {
 import { initFirebase } from "../../db";
 import { useRouter } from "next/router";
 import styles from "../../styles/Login.module.css";
+import Link from "next/link";
 
 const app = initFirebase();
 
@@ -16,9 +17,12 @@ function Login() {
   const router = useRouter();
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState<string>();
 
   const handleSignIn = async (event: any) => {
     event.preventDefault();
+
+    setErrorMessage("");
 
     const data = {
       email: event.target.userEmail.value,
@@ -41,6 +45,10 @@ function Login() {
             router.push("/");
           })
           .catch((error) => {
+            setErrorMessage(
+              "There was a problem logging into your account. Please try again later. Issue: " +
+                error.message
+            );
             const errorCode = error.code;
             const errorMessage = error.message;
             // ..
@@ -71,6 +79,14 @@ function Login() {
           defaultValue={userPassword}
         />
         <button type="submit">Login</button>
+        {errorMessage !== "" ? <div>{errorMessage}</div> : null}
+        <div className={styles.signupInstead}>
+          Don't have an account?{" "}
+          <Link href={"/signup"}>
+            <span className={styles.signupLabel}>Sign Up</span>
+          </Link>{" "}
+          instead.
+        </div>
       </form>
     </div>
   );

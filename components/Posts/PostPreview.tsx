@@ -2,7 +2,7 @@ import { Timestamp } from "firebase/firestore/lite";
 import styles from "../../styles/PostPreview.module.css";
 
 export interface PostData {
-  id: string;
+  docId: string;
   title: string;
   body: string;
   author: string;

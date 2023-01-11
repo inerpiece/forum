@@ -29,80 +29,6 @@ const db = getFirestore(app);
 
 const auth = getAuth(app);
 
-const mockPostOne: PostData = {
-  id: "124",
-  author: "Bo",
-  body: "Yall this might work",
-  categories: ["fafb", "bruh", "a", "b", "c", "d"],
-  comments: [
-    { author: "Bo", body: "First comment", upvotes: 20, downvotes: 3 },
-  ],
-  date: "15/15/15",
-  downvotes: 5_000,
-  upvotes: 5_103,
-  image: "yes",
-  isFeatured: false,
-  isHotTrending: false,
-  isTopThree: false,
-  title: "Yas marina",
-  views: 6_403_402,
-};
-
-const mockPostTwo: PostData = {
-  id: "125",
-  author: "Bo",
-  body: "Yall this might work",
-  categories: ["fafb", "bruh", "a", "b", "c", "d"],
-  comments: [
-    { author: "Bo", body: "First comment", upvotes: 20, downvotes: 3 },
-  ],
-  date: "15/15/15",
-  downvotes: 5_000,
-  upvotes: 5_103,
-  image: "yes",
-  isFeatured: false,
-  isHotTrending: false,
-  isTopThree: false,
-  title: "Yas marina",
-  views: 2_403_402,
-};
-
-const mockPostThree: PostData = {
-  id: "126",
-  author: "Bo",
-  body: "Yall this might work",
-  categories: ["fafb", "bruh", "a", "b", "c", "d"],
-  comments: [
-    { author: "Bo", body: "First comment", upvotes: 20, downvotes: 3 },
-  ],
-  date: "15/15/15",
-  downvotes: 5_000,
-  upvotes: 5_103,
-  image: "yes",
-  isFeatured: false,
-  isHotTrending: false,
-  isTopThree: false,
-  title: "Yas marina",
-  views: 1_403_402,
-};
-
-const mockArrPosts = [mockPostOne, mockPostTwo, mockPostThree];
-
-const mockThread: ThreadData = {
-  author: "Bovine",
-  categories: ["fast", "faster", "fastest", "speed", "yeet"],
-  date: "14/14/14",
-  id: "321",
-  members: 499_044_244,
-  title: "Why did the dog cross the road",
-  body: "for no reason",
-  isFeatured: true,
-  isHotTrending: true,
-  isTopThree: false,
-  image: "yes",
-  posts: ["124", "125", "126"],
-};
-
 // TODO: pull the posts from the db based on their ids
 
 const Thread = () => {
@@ -344,15 +270,15 @@ const Thread = () => {
         <div>
           {postsData.map((post: PostData) => (
             <Link
-              href={"/threads/" + threadId + "/posts/" + post.id}
-              key={post.id}
+              href={"/threads/" + threadId + "/posts/" + post.docId}
+              key={post.docId}
             >
               <PostPreview
                 author={post.author}
                 categories={post.categories}
                 date={post.date}
                 image={post.image}
-                id={post.id}
+                docId={post.docId}
                 title={post.title}
                 views={post.views}
                 upvotes={post.upvotes}

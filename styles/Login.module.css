@@ -25,3 +25,20 @@
 .loginForm input:focus-visible {
   outline: none;
 }
+
+.errorMessage {
+  color: red;
+  font-size: 18px;
+  padding: 10px;
+}
+
+.loginInstead, .signupInstead {
+  color: var(--fifth-forum-color);
+  font-size: 18px;
+  padding: 0 10px;
+}
+
+.loginLabel, .signupLabel {
+  color: var(--forth-forum-color);
+  text-decoration: underline;
+}

@@ -13,7 +13,6 @@ const auth = getAuth(app);
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
-
   // ------------
   // The code block below allows for extracting the name and capitilizing the first letter of the route
   // It is then used as the navigation title in the tsx template

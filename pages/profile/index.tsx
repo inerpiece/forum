@@ -28,7 +28,7 @@ const userFriends = [
 // TODO: pull friends from db based on uid
 
 const mockPostOne: PostData = {
-  id: "124",
+  docId: "124",
   author: "Bo",
   body: "Yall this might work",
   categories: ["fafb", "bruh", "a", "b", "c", "d"],
@@ -47,7 +47,7 @@ const mockPostOne: PostData = {
 };
 
 const mockPostTwo: PostData = {
-  id: "125",
+  docId: "125",
   author: "Bo",
   body: "Yall this might work",
   categories: ["fafb", "bruh", "a", "b", "c", "d"],
@@ -66,7 +66,7 @@ const mockPostTwo: PostData = {
 };
 
 const mockPostThree: PostData = {
-  id: "126",
+  docId: "126",
   author: "Bo",
   body: "Yall this might work",
   categories: ["fafb", "bruh", "a", "b", "c", "d"],
@@ -276,7 +276,7 @@ const Profile = () => {
               title={post.title}
               upvotes={post.upvotes}
               views={post.views}
-              id={post.id}
+              docId={post.docId}
               key={index}
             />
           ))}
