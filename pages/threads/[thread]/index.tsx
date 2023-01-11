@@ -161,10 +161,6 @@ const Thread = () => {
           { merge: true }
         );
         console.log("added post id to thread");
-        try {
-        } catch (error) {
-          console.log(error);
-        }
       } catch (error) {
         console.log(error);
       }
@@ -268,7 +264,7 @@ const Thread = () => {
       typeof threadData !== "undefined" &&
       typeof threadData !== null ? (
         <div>
-          {postsData.map((post: PostData) => (
+          {postsData?.map((post: PostData) => (
             <Link
               href={"/threads/" + threadId + "/posts/" + post.docId}
               key={post.docId}

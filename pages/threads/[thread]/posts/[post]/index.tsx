@@ -30,6 +30,7 @@ const auth = getAuth(app);
 
 const Post = () => {
   const router = useRouter();
+  console.log("router.asPath", router.asPath);
   const [commentBoxIsVisible, setCommentBoxIsVisible] = useState(false);
   const postId = router.query.post;
   console.log("postId", postId);
@@ -94,7 +95,7 @@ const Post = () => {
     const formattedTime = `${newDate.getHours()}:${newDate.getMinutes()}:${newDate.getSeconds()}`;
 
     const formData = {
-      body: event.target.postBody.value,
+      body: event.target.commentBody.value,
       author: auth.currentUser.email,
       date: formattedDate,
       upvotes: 0,
@@ -119,14 +120,11 @@ const Post = () => {
           { merge: true }
         );
         console.log("added comment id to post");
-        try {
-        } catch (error) {
-          console.log(error);
-        }
       } catch (error) {
         console.log(error);
       }
-      router.reload();
+      setCommentBoxIsVisible(false);
+      router.push("/");
     } catch (error) {
       console.log(error);
     } finally {
@@ -274,7 +272,7 @@ const Post = () => {
               </form>
             </div>
           ) : null}
-          {postData.comments?.map((comment: any, index: any) => (
+          {commentsData?.map((comment: any, index: any) => (
             <Comment
               author={comment.author}
               body={comment.body}

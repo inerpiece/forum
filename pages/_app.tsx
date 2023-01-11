@@ -13,14 +13,17 @@ const auth = getAuth(app);
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
+  console.log(router);
   // ------------
   // The code block below allows for extracting the name and capitilizing the first letter of the route
   // It is then used as the navigation title in the tsx template
   const splitter = router.asPath.split("/");
-  const splLen = splitter[splitter.length - 1];
-  const navTitle = splLen
-    ? splLen.charAt(0).toUpperCase() + splLen.slice(1, splLen.length)
-    : "Home";
+  const splLen = splitter[splitter.length - 1]; //last element
+  const navTitle =
+    splitter.length === 3 ? "Thread" : splitter.length >= 4 ? "Post" : "Home";
+
+  // splLen
+  // ? splLen.charAt(0).toUpperCase() + splLen.slice(1, splLen.length)
   // ------------
   const [burgerMenuIsVisible, setBurgerMenuIsVisible] = useState(false);
   // The below use effect allows for the menu to be automatically closed if the route changes (if a user clicks on of the listed options in the menu)
