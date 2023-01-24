@@ -1,7 +1,7 @@
 .container {
   display: flex;
   width: 90%;
-  background-color: #806305;
+  background-color: var(--forth-forum-color);
   margin: 0 auto;
 }
 
@@ -28,13 +28,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-left: 1px solid #403103;
+  border-left: 1px solid var(--fifth-forum-color);
 }
 
 .title {
   margin: 10px 0;
   padding: 0 10px;
-  color: #FFC509;
+  color: var(--primary-forum-color);
 }
 
 .authorContainer {
@@ -46,14 +46,18 @@
 }
 
 .author {
-  color: #E6B209;
+  color: var(--secondary-forum-color);
 }
 
 .date {
-  color: #403103;
+  color: var(--fifth-forum-color);
 }
 
 .members {
-  color: #403103;
+  color: var(--fifth-forum-color);
   font-size: 22px;
+}
+
+.path {
+  fill: var(--fifth-forum-color);
 }
